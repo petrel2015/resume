@@ -15,6 +15,22 @@ body {
   }
 }
 
+.export-btn:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 1001;
+}
+
 .export-btn {
   position: fixed;
   top: 20px;
@@ -28,6 +44,7 @@ body {
   z-index: 1000;
   font-weight: bold;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.2s;
 }
 
 .export-btn:hover {
@@ -47,19 +64,51 @@ body {
 }
 
 @media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 210mm;
+    height: 100%;
+  }
   body {
     background-color: white;
+    -webkit-print-color-adjust: exact;
   }
   .app-container {
     padding: 0;
+    margin: 0;
+    display: block;
+    width: 210mm;
   }
   .export-btn {
     display: none;
   }
   .a4-page {
-    margin: 0;
-    box-shadow: none;
-    break-after: page;
+    margin: 0 !important;
+    padding: 8mm 15mm 12mm !important; /* 调整页边距：上8mm，左右15mm，下12mm 为页脚留出空间 */
+    width: 210mm !important;
+    height: 297mm !important;
+    box-shadow: none !important;
+    border: none !important;
+    display: block !important;
+    page-break-after: always !important;
+    overflow: hidden !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+  }
+  
+  .page-footer {
+    position: absolute;
+    bottom: 5mm !important; /* 强制页脚固定在 A4 纸张最底部 */
+    left: 15mm;
+    right: 15mm;
+    border-top: 1px solid #eee;
+    padding-top: 2mm;
+    display: flex !important; /* 打印时强制显示 */
   }
 }
 
@@ -170,6 +219,9 @@ body {
 /* 工作经历 */
 .experience-item {
   margin-bottom: 15px;
+  border-left: 2px solid #eee;
+  padding-left: 12px;
+  margin-left: 1px;
 }
 
 .exp-header {
@@ -207,9 +259,10 @@ body {
 
 /* 教育背景 */
 .education-item {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
+  margin-bottom: 15px;
+  border-left: 2px solid #eee;
+  padding-left: 12px;
+  margin-left: 1px;
 }
 
 .edu-date {
@@ -218,45 +271,87 @@ body {
 
 /* 项目经历 */
 .project-detail {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  border-left: 2px solid #eee;
+  padding-left: 12px;
+  margin-left: 1px; /* 微调以使 2px 线条在 4px 蓝线下方居中对齐，或设为 0 以靠左对齐 */
 }
 
 .project-header {
-  background-color: #f8f9fa;
-  padding: 5px 10px;
-  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
   font-weight: bold;
   font-size: 14px;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
+  color: #1a1a1a;
 }
 
 .project-meta {
+  color: #666;
   font-size: 12px;
-  margin-bottom: 8px;
-  color: #555;
+  margin-bottom: 10px;
+  font-style: italic;
   display: flex;
   justify-content: space-between;
-  padding: 0 10px;
 }
 
 .project-sub-section {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   display: flex;
-  align-items: flex-start;
+  align-items: baseline;
 }
 
 .sub-title {
   font-weight: bold;
   font-size: 13px;
   color: #005fb8;
-  width: 75px;
+  width: 65px;
   flex-shrink: 0;
 }
 
 .sub-content {
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 1.5;
   flex: 1;
+  color: #444;
+}
+
+.qr-container {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.qr-code {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #eee;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: #fafafa;
+  margin-left: 20px;
+  align-self: center; /* 让二维码图标相对于整行居中，而不影响文字基线对齐 */
+}
+
+.qr-code img {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+}
+
+.qr-code span {
+  font-size: 10px;
+  color: #666;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+@media print {
+  .qr-code img {
+    -webkit-print-color-adjust: exact;
+  }
 }
 
 /* 页脚 */

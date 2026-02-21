@@ -8,7 +8,7 @@ const App: React.FC = () => {
 
   return (
     <div className="app-container">
-      <button className="export-btn" onClick={handlePrint}>导出 PDF</button>
+      <button className="export-btn" onClick={handlePrint} title="建议使用 Chrome 浏览器以获得最佳导出效果">导出 PDF</button>
 
       {/* 第一页 */}
       <div className="a4-page">
@@ -37,12 +37,12 @@ const App: React.FC = () => {
             <div><strong>性能优化能手：</strong>攻克 Spark 性能劣化 20% 难题，资源利用率提升 21%</div>
           </div>
           <div className="advantage-item">
-            <span>💪</span>
-            <div><strong>技术影响力先锋：</strong>1 年输出 70+ 技术文档，获华为“卓越编码奖”</div>
-          </div>
-          <div className="advantage-item">
             <span>🏅</span>
             <div><strong>核心代码贡献者：</strong>深度参与 Spark on Yarn 迁移至 Spark on K8s，节省百万成本</div>
+          </div>
+          <div className="advantage-item">
+            <span>🦾</span>
+            <div><strong>前沿技术探索者：</strong>引领团队拥抱 AI Agent 协同，通过 AI 赋能显著提升交付效能</div>
           </div>
         </div>
 
@@ -130,9 +130,11 @@ const App: React.FC = () => {
 
         <div className="section-title">教育背景</div>
         <div className="education-item">
-          <strong>北京信息科技大学</strong>
-          <span>本科 | 工学 - 计算机相关类 - 网络工程</span>
-          <span className="edu-date">2013-09 至 2017-06</span>
+          <div className="exp-header">
+            <span>北京信息科技大学</span>
+            <span className="edu-date">2013-09 至 2017-06</span>
+          </div>
+          <div className="exp-subheader">本科 | 工学 - 计算机相关类 - 网络工程</div>
         </div>
 
         <div className="page-footer">
@@ -154,17 +156,24 @@ const App: React.FC = () => {
             <span>角色：核心开发</span>
           </div>
           <div className="project-sub-section">
-            <div className="sub-title">背景 & 结果</div>
-            <div className="sub-content">
-              希望通过资源潮汐调度节约服务器资源。最终实现计算任务耗时不变，总体资源降配 21%。
-            </div>
+            <div className="sub-title">🏆 成果</div>
+            <div className="sub-content">实现计算任务耗时不变，总体资源降配 21%。</div>
           </div>
           <div className="project-sub-section">
-            <div className="sub-title">具体行动</div>
+            <div className="sub-title">📝 背景</div>
+            <div className="sub-content">希望通过资源潮汐调度节约服务器资源。</div>
+          </div>
+          <div className="project-sub-section">
+            <div className="sub-title">🎯 任务</div>
+            <div className="sub-content">负责感知队列更新、动态扩缩容及亲和性调度等核心逻辑开发。<u>难点在于实现潮汐调度在快速响应资源变化的同时，保持任务运行的平稳性。</u></div>
+          </div>
+          <div className="project-sub-section">
+            <div className="sub-title">⚡ 行动</div>
             <div className="sub-content">
               1. 感知队列更新：利用 fabric8 informer 监听资源 cr，感知潮汐动作。<br/>
               2. 动态扩缩容：动态更新 spark.dynamicAllocation.maxExecutors 参数，在高负载时扩容。<br/>
-              3. 亲和性调度：与 K8s scheduler 协同，通过 pod 注解实现 executor 在借来节点的亲和性部署。
+              3. 优雅缩容：在满足强制归还红线的前提下，通过平滑迁移技术尽可能减少任务失败重试。<br/>
+              4. 亲和性调度：与 K8s scheduler 协同，通过 pod 注解实现 executor 在借来节点的亲和性部署。
             </div>
           </div>
         </div>
@@ -178,16 +187,23 @@ const App: React.FC = () => {
             <span>角色：救火队员</span>
           </div>
           <div className="project-sub-section">
-            <div className="sub-title">背景 & 结果</div>
-            <div className="sub-content">
-              在 Spark On Yarn 切换至 K8s 过程中，发现性能劣化 20%。攻关后提升性能 20%，并总结出一套定位指导。
-            </div>
+            <div className="sub-title">🏆 成果</div>
+            <div className="sub-content">1. 提升性能 20%，并总结出一套定位指导。<br/>2. 沉淀性能优化方法论，显著提升个人与团队定位、分析及解决性能问题的效率，节省团队人力成本。</div>
           </div>
           <div className="project-sub-section">
-            <div className="sub-title">具体行动</div>
+            <div className="sub-title">📝 背景</div>
+            <div className="sub-content">在 Spark On Yarn 切换至 K8s 过程中，发现性能劣化 20%。</div>
+          </div>
+          <div className="project-sub-section">
+            <div className="sub-title">🎯 任务</div>
+            <div className="sub-content">通过工具定位性能瓶颈并解决 OOM 问题。</div>
+          </div>
+          <div className="project-sub-section">
+            <div className="sub-title">⚡ 行动</div>
             <div className="sub-content">
-              1. 瓶颈定位：通过 Arthas 火焰图和 JFR 文件分析。发现上游 SDK 在打印 debug 日志时拼接字符串导致 10% 性能损耗。<br/>
-              2. OOM 解决：分析 GC 日志和内存 dump 文件，利用 JProfiler 找到内存泄漏根因，与触发团队协作修复。
+              1. 瓶颈定位：通过 Arthas 火焰图分析发现 SDK 拼接日志导致 10% 性能损耗。<br/>
+              2. OOM 解决：分析内存 dump 找到泄露根因，与触发团队协作完成修复。<br/>
+              3. 配置对标：修复 Spark 迁移至 K8s 后部分配置未生效导致的 CPU 利用率低问题。
             </div>
           </div>
         </div>
@@ -201,35 +217,59 @@ const App: React.FC = () => {
             <span>角色：专项负责人</span>
           </div>
           <div className="project-sub-section">
-            <div className="sub-title">具体行动</div>
+            <div className="sub-title">🏆 成果</div>
+            <div className="sub-content">保障送检进度，成功规避内网安全红线风险，建立长效质量管控机制。</div>
+          </div>
+          <div className="project-sub-section">
+            <div className="sub-title">📝 背景</div>
+            <div className="sub-content">版本送检面临严格的安全红线要求及人力紧张的挑战。</div>
+          </div>
+          <div className="project-sub-section">
+            <div className="sub-title">🎯 任务</div>
+            <div className="sub-content">作为专项负责人，统筹安全扫描、风险修复及进度管理。</div>
+          </div>
+          <div className="project-sub-section">
+            <div className="sub-title">⚡ 行动</div>
             <div className="sub-content">
-              1. 风险识别：联合安全 SE，利用自动化扫描规则对责任田进行深度扫描，识别内网安全红线风险。<br/>
-              2. 人力协调：在扫描项过多、人力不足时，及时求助团队领导协调资源，保障送检进度。<br/>
-              3. 闭环管理：建立每日日报 and 风险追踪机制。复核扫描规则，并将安全意识融入日常开发流程，输出会议纪要。
+              1. 风险识别：利用自动化扫描规则对责任田进行深度扫描，识别红线风险。<br/>
+              2. 资源协调：及时求助领导协调人力，保障送检进度。<br/>
+              3. 闭环管理：建立每日日报及风险追踪机制，复核扫描规则，输出会议纪要。
             </div>
           </div>
         </div>
 
         <div className="project-detail">
           <div className="project-header">
-            <span>4、个人项目：Spark-Performance-Insight (开源工具)</span>
+            <span>4、个人项目：Spark 智能性能诊断工具 (LLM + MCP)</span>
           </div>
           <div className="project-meta">
-            <span>关键词：Java 21，DuckDB，Vue 3，Gemini CLI，性能优化</span>
-            <span>角色：项目负责人 / 核心开发</span>
+            <span>关键词：Spring Boot, Spring AI, Vue 3, Claude Code, Gemini CLI, LLM 诊断, MCP 服务</span>
           </div>
           <div className="project-sub-section">
-            <div className="sub-title">背景 & 结果</div>
+            <div className="sub-title">🎯 愿景</div>
             <div className="sub-content">
-              针对 Spark 原生 UI 加载大日志慢、易 OOM、无诊断建议的痛点，构建秒级解析工具。将 2GB 日志解析从 120min 优化至 5min (提升 24 倍)。
+              基于 LLM 洞察数据，通过 MCP 开放能力。
             </div>
           </div>
           <div className="project-sub-section">
-            <div className="sub-title">具体行动</div>
+            <div className="sub-title">💡 亮点</div>
             <div className="sub-content">
-              1. 性能突破：引入奖章架构，利用 DuckDB 原生 JSON 加载实现 OLAP 级解析性能。<br/>
-              2. 智能诊断：自研 9 维指标评分系统，通过“红绿灯”视觉反馈直观呈现 Stage 瓶颈。<br/>
-              3. 质量闭环：集成 JMH 性能看护与 GitHub Actions CI，实现工业级自动化质量审计。
+              1. 智能诊断（AI-Driven）：依托大模型对系统预处理后的汇聚指标进行深度分析。利用 LLM 的推理能力，基于确定的初级指标进行二次推断，给出具有建设性、可落地的调优策略，生成动态且前瞻性的诊断建议。<br/>
+              2. 规则诊断（Rule-Based）：通过预设业务规则（如 GC 时间占比、Shuffle情况等）对指标进行量化分析。为 Stage 和 Job 计算性能得分。输出结果稳定、可靠且可迭代的诊断报告。<br/>
+              3. 生态赋能（MCP）：作为 MCP 服务运行，使 AI Agent 能直接读取并分析本地 Spark 日志。<br/>
+              4. 效能革命（AI Agent）：全程基于 AI Agent 协同模式开发，深度实践 `skill` 与 `gemini.md` 配置. 沉淀出一套涵盖自动化提交、语义化版本发布及编码规范自检的工业级 AI 开发全流程。
+            </div>
+          </div>
+          <div className="project-sub-section">
+            <div className="sub-title">🔍 预览</div>
+            <div className="sub-content qr-container">
+              <a href="https://petrel2015.github.io/Spark-Performance-Insight/README.zh.html" target="_blank" rel="noopener noreferrer" className="contact-link">
+                https://petrel2015.github.io/Spark-Performance-Insight
+              </a>
+              <div className="qr-code">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://petrel2015.github.io/Spark-Performance-Insight/README.zh.html" alt="QR Code" />
+                <span>手机扫码查看</span>
+              </div>
             </div>
           </div>
         </div>
