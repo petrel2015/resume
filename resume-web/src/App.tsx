@@ -2,13 +2,42 @@ import React from 'react';
 import './App.css';
 
 const App: React.FC = () => {
+  const [isFullScreen, setIsFullScreen] = React.useState(false);
+
   const handlePrint = () => {
     window.print();
   };
 
+  const toggleFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch((err) => {
+        console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+      });
+      setIsFullScreen(true);
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+        setIsFullScreen(false);
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    const handleFullScreenChange = () => {
+      setIsFullScreen(!!document.fullscreenElement);
+    };
+    document.addEventListener('fullscreenchange', handleFullScreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullScreenChange);
+  }, []);
+
   return (
     <div className="app-container">
-      <button className="export-btn" onClick={handlePrint} title="建议使用 Chrome 浏览器以获得最佳导出效果">导出 PDF</button>
+      <div className="button-group">
+        <button className="screen-btn" onClick={toggleFullScreen}>
+          {isFullScreen ? '取消全屏' : '全屏显示'}
+        </button>
+        <button className="export-btn" onClick={handlePrint} title="建议使用 Chrome 浏览器以获得最佳导出效果">导出 PDF</button>
+      </div>
 
       {/* 第一页 */}
       <div className="a4-page">
@@ -83,7 +112,7 @@ const App: React.FC = () => {
               <span className="exp-point-title">🔧 问题解决：</span>2025年定位 180+ 次复杂问题，解决 144 个问题单，有效降低项目风险。
             </div>
             <div className="exp-point">
-              <span className="exp-point-title">📚 知识传承：</span>累计输出 70 篇 wiki 文档，提升团队技术水平。
+              <span className="exp-point-title">📚 知识传承：</span>2025年累计输出 70 篇 wiki 文档，提升团队技术水平。
             </div>
             <div className="exp-point">
               <span className="exp-point-title">🏅 荣誉表彰：</span>荣获部门“卓越编码奖”、“担当奖”。
@@ -243,7 +272,7 @@ const App: React.FC = () => {
             <span>4、个人项目：Spark 智能性能诊断工具 (LLM + MCP)</span>
           </div>
           <div className="project-meta">
-            <span>关键词：Spring Boot, Spring AI, Vue 3, Claude Code, Gemini CLI, LLM 诊断, MCP 服务</span>
+            <span>关键词：Spring Boot, Spring AI, DuckDB, Vue 3, Claude Code, Gemini CLI, LLM 诊断, MCP 服务</span>
           </div>
           <div className="project-sub-section">
             <div className="sub-title">🎯 愿景</div>
