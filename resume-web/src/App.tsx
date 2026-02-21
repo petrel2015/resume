@@ -194,7 +194,7 @@ const App: React.FC = () => {
           </div>
           <div className="project-sub-section">
             <div className="sub-title">🎯 任务</div>
-            <div className="sub-content">负责感知队列更新、动态扩缩容及亲和性调度等核心逻辑开发。<u>难点在于实现潮汐调度在快速响应资源变化的同时，保持任务运行的平稳性。</u></div>
+            <div className="sub-content">负责感知队列更新、动态扩缩容及亲和性调度等核心逻辑开发。<br/><u>难点在于实现潮汐调度在快速响应资源变化的同时，保持任务运行的平稳性。</u></div>
           </div>
           <div className="project-sub-section">
             <div className="sub-title">⚡ 行动</div>
@@ -231,8 +231,7 @@ const App: React.FC = () => {
             <div className="sub-title">⚡ 行动</div>
             <div className="sub-content">
               1. 瓶颈定位：通过 Arthas 火焰图分析发现 SDK 拼接日志导致 10% 性能损耗。<br/>
-              2. OOM 解决：分析内存 dump 找到泄露根因，与触发团队协作完成修复。<br/>
-              3. 配置对标：修复 Spark 迁移至 K8s 后部分配置未生效导致的 CPU 利用率低问题。
+              2. OOM 解决：分析内存 dump 找到泄露根因，与触发团队协作完成修复。
             </div>
           </div>
         </div>
@@ -242,7 +241,7 @@ const App: React.FC = () => {
             <span>3、大数据平台 JDK 8 至 21 基座升级</span>
           </div>
           <div className="project-meta">
-            <span>关键词：JDK 21, Spark 3.5.1, G1 GC, 兼容性改造</span>
+            <span>关键词：JDK 21, Spark 3.5.1, 依赖治理</span>
             <span>角色：专项负责人</span>
           </div>
           <div className="project-sub-section">
@@ -260,7 +259,7 @@ const App: React.FC = () => {
           <div className="project-sub-section">
             <div className="sub-title">⚡ 行动</div>
             <div className="sub-content">
-              1. 兼容性改造：通过 Maven 降级编译保障字节码向下兼容；利用 `--add-opens` 解决 JDK 21 模块化后的反射访问限制。<br/>
+              1. 兼容性适配：通过 Maven 降级编译保障字节码向下兼容；利用 `--add-opens` 解决 JDK 21 模块化后的反射访问限制。<br/>
               2. 依赖治理：解决 Hadoop 3.3.1 与 Hive 间的依赖冲突，协同周边团队对不支持 JDK 8 的开源库进行定制化降级编译。<br/>
               3. 风险管理：每日与具体开发人员深度沟通，动态追踪进度并识别新风险。通过日报形式闭环管理，确保项目状态透明，实现风险心中有数与关键节点的可控。
             </div>
@@ -283,7 +282,7 @@ const App: React.FC = () => {
           <div className="project-sub-section">
             <div className="sub-title">💡 亮点</div>
             <div className="sub-content">
-              1. 智能诊断（AI-Driven）：依托大模型对系统预处理后的汇聚指标进行深度分析。利用 LLM 的推理能力，基于确定的初级指标进行二次推断，给出具有建设性、可落地的调优策略，生成动态且前瞻性的诊断建议。<br/>
+              1. 智能诊断（AI-Driven）：依托大模型对系统预处理后的汇聚指标进行深度分析。利用 LLM 的推理能力，基于初级指标进行推断，给出具有建设性、可落地的调优策略，生成动态且前瞻性的诊断建议。<br/>
               2. 规则诊断（Rule-Based）：通过预设业务规则（如 GC 时间占比、Shuffle情况等）对指标进行量化分析。为 Stage 和 Job 计算性能得分。输出结果稳定、可靠且可迭代的诊断报告。<br/>
               3. 生态赋能（MCP）：作为 MCP 服务运行，使 AI Agent 能直接读取并分析本地 Spark 日志。<br/>
               4. 效能革命（AI Agent）：全程基于 AI Agent 协同模式开发，深度实践 `skill` 与 `gemini.md` 配置. 沉淀出一套涵盖自动化提交、语义化版本发布及编码规范自检的工业级 AI 开发全流程。
@@ -292,11 +291,11 @@ const App: React.FC = () => {
           <div className="project-sub-section">
             <div className="sub-title">🔍 预览</div>
             <div className="sub-content qr-container">
-              <a href="https://petrel2015.github.io/Spark-Performance-Insight/README.zh.html" target="_blank" rel="noopener noreferrer" className="contact-link">
-                https://petrel2015.github.io/Spark-Performance-Insight
+              <a href="https://github.com/petrel2015/Spark-Performance-Insight/blob/main/README.zh.md" target="_blank" rel="noopener noreferrer" className="contact-link">
+                https://github.com/petrel2015/Spark-Performance-Insight
               </a>
               <div className="qr-code">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://petrel2015.github.io/Spark-Performance-Insight/README.zh.html" alt="QR Code" />
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://github.com/petrel2015/Spark-Performance-Insight/blob/main/README.zh.md" alt="QR Code" />
                 <span>手机扫码查看</span>
               </div>
             </div>
