@@ -239,30 +239,30 @@ const App: React.FC = () => {
 
         <div className="project-detail">
           <div className="project-header">
-            <span>3、版本安全送检与质量管理</span>
+            <span>3、大数据平台 JDK 8 至 21 基座升级</span>
           </div>
           <div className="project-meta">
-            <span>关键词：风险管控，安全红线，自动化扫描</span>
-            <span>角色：专项负责人</span>
+            <span>关键词：JDK 21, Spark 3.5.1, G1 GC, 兼容性改造</span>
+            <span>角色：主导人</span>
           </div>
           <div className="project-sub-section">
             <div className="sub-title">🏆 成果</div>
-            <div className="sub-content">保障送检进度，成功规避内网安全红线风险，建立长效质量管控机制。</div>
+            <div className="sub-content">主导完成 8 个核心服务及 4 个 SDK 组件的平滑升级，实现业务无感知切换，解决潜在安全红线风险。</div>
           </div>
           <div className="project-sub-section">
             <div className="sub-title">📝 背景</div>
-            <div className="sub-content">版本送检面临严格的安全红线要求及人力紧张的挑战。</div>
+            <div className="sub-content">JDK 8 进入日落周期，基于公司安全合规要求，需在限定时间内完成向 JDK 21 的迁移。</div>
           </div>
           <div className="project-sub-section">
             <div className="sub-title">🎯 任务</div>
-            <div className="sub-content">作为专项负责人，统筹安全扫描、风险修复及进度管理。</div>
+            <div className="sub-content">在 Spark 3.5.1 生态下，解决全链路兼容性、依赖冲突及 GC 调优问题，确保性能不回退。</div>
           </div>
           <div className="project-sub-section">
             <div className="sub-title">⚡ 行动</div>
             <div className="sub-content">
-              1. 风险识别：利用自动化扫描规则对责任田进行深度扫描，识别红线风险。<br/>
-              2. 资源协调：及时求助领导协调人力，保障送检进度。<br/>
-              3. 闭环管理：建立每日日报及风险追踪机制，复核扫描规则，输出会议纪要。
+              1. 兼容性改造：通过 Maven 降级编译保障字节码向下兼容；利用 `--add-opens` 解决 JDK 21 模块化后的反射访问限制。<br/>
+              2. 依赖治理：解决 Hadoop 3.3.1 与 Hive 间的依赖冲突，协同周边团队对不支持 JDK 8 的开源库进行定制化降级编译。<br/>
+              3. 性能调优：完成 CMS 至 G1 GC 的平滑迁移与参数重构，端到端压测显示核心指标持平，系统稳定性显著提升。
             </div>
           </div>
         </div>
