@@ -243,7 +243,7 @@ const App: React.FC = () => {
           </div>
           <div className="project-meta">
             <span>关键词：JDK 21, Spark 3.5.1, G1 GC, 兼容性改造</span>
-            <span>角色：主导人</span>
+            <span>角色：专项负责人</span>
           </div>
           <div className="project-sub-section">
             <div className="sub-title">🏆 成果</div>
