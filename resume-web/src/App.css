@@ -1,0 +1,284 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #333;
+}
+
+@media screen {
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+}
+
+.export-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #005fb8;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1000;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.export-btn:hover {
+  background-color: #004a91;
+}
+
+.a4-page {
+  width: 210mm;
+  height: 297mm;
+  padding: 15mm 20mm;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+@media print {
+  body {
+    background-color: white;
+  }
+  .app-container {
+    padding: 0;
+  }
+  .export-btn {
+    display: none;
+  }
+  .a4-page {
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+  }
+}
+
+/* 头部样式 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #005fb8;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.info-left h1 {
+  margin: 0;
+  font-size: 28px;
+  color: #1a1a1a;
+}
+
+.info-left p {
+  margin: 5px 0 0;
+  color: #666;
+  white-space: nowrap;
+}
+
+.info-right {
+  text-align: right;
+  font-size: 14px;
+}
+
+.info-right p {
+  margin: 3px 0;
+  white-space: nowrap;
+}
+
+.contact-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.contact-link:hover {
+  color: #005fb8;
+  text-decoration: underline;
+}
+
+/* 章节标题 */
+.section-title {
+  color: #005fb8;
+  font-size: 18px;
+  border-left: 4px solid #005fb8;
+  padding-left: 10px;
+  margin: 15px 0 10px;
+  font-weight: bold;
+}
+
+/* 核心优势 */
+.core-advantages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.advantage-item {
+  display: flex;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.advantage-item span {
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.advantage-item div {
+  display: flex;
+  align-items: flex-start;
+}
+
+.advantage-item strong {
+  width: 115px;
+  flex-shrink: 0;
+  color: #1a1a1a;
+}
+
+/* 技术栈 */
+.tech-stack {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-auto-flow: row;
+  gap: 6px 30px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.tech-group {
+  display: flex;
+  align-items: flex-start;
+}
+
+.tech-label {
+  font-weight: bold;
+  color: #333;
+  flex-shrink: 0;
+  width: 80px;
+}
+
+/* 工作经历 */
+.experience-item {
+  margin-bottom: 15px;
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.exp-subheader {
+  color: #666;
+  font-size: 12px;
+  margin-bottom: 5px;
+  font-style: italic;
+}
+
+.exp-content {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.exp-point {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.exp-point-title {
+  font-weight: bold;
+  color: #2c3e50;
+  width: 95px;
+  flex-shrink: 0;
+}
+
+/* 教育背景 */
+.education-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.edu-date {
+  font-weight: bold;
+}
+
+/* 项目经历 */
+.project-detail {
+  margin-bottom: 15px;
+}
+
+.project-header {
+  background-color: #f8f9fa;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.project-meta {
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.project-sub-section {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.sub-title {
+  font-weight: bold;
+  font-size: 13px;
+  color: #005fb8;
+  width: 75px;
+  flex-shrink: 0;
+}
+
+.sub-content {
+  font-size: 12px;
+  line-height: 1.4;
+  flex: 1;
+}
+
+/* 页脚 */
+.page-footer {
+  position: absolute;
+  bottom: 10mm;
+  left: 20mm;
+  right: 20mm;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #999;
+  border-top: 1px solid #eee;
+  padding-top: 5px;
+}
+
+@media print {
+  .page-footer {
+    display: flex !important;
+  }
+  .contact-link {
+    color: #333 !important;
+    text-decoration: none !important;
+  }
+}
