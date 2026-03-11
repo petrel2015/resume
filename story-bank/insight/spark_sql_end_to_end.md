@@ -239,3 +239,65 @@ flowchart TB
 - 结合 AQE（Adaptive Query Execution）
 - 更复杂的 Join/Window/CTE
 告诉我即可。
+
+## spark-sql 交互验证脚本（建表 + 查询）
+
+下面是一套可以直接在 `spark-sql` 交互终端执行的完整 SQL，和上面的示例一致，包含建表、插入与查询。
+
+```sql
+-- 可选：降低 shuffle 分区，便于本地查看
+SET spark.sql.shuffle.partitions=4;
+
+-- 清理旧表
+DROP TABLE IF EXISTS user_events;
+DROP TABLE IF EXISTS dim_users;
+
+-- 建表：事实表
+CREATE TABLE user_events (
+  user_id    BIGINT,
+  event_type STRING,
+  ts         STRING
+)
+USING parquet;
+
+-- 建表：维表
+CREATE TABLE dim_users (
+  user_id BIGINT,
+  city    STRING
+)
+USING parquet;
+
+-- 插入事件数据
+INSERT INTO user_events VALUES
+  (1, 'purchase', '2026-03-01 10:01:00'),
+  (1, 'click',    '2026-03-01 10:02:00'),
+  (2, 'purchase', '2026-03-01 11:01:00'),
+  (3, 'purchase', '2026-03-01 12:01:00'),
+  (4, 'click',    '2026-03-01 12:05:00'),
+  (5, 'purchase', '2026-03-01 12:06:00');
+
+-- 插入维表数据（故意少一些，让 join 有不匹配）
+INSERT INTO dim_users VALUES
+  (1, 'Shanghai'),
+  (2, 'Beijing'),
+  (3, 'Shanghai');
+
+-- 查询：与文章一致
+SELECT u.city, COUNT(*) AS cnt
+FROM user_events e
+JOIN dim_users u ON e.user_id = u.user_id
+WHERE e.event_type = 'purchase'
+GROUP BY u.city
+ORDER BY cnt DESC
+LIMIT 10;
+
+-- 如需查看执行计划
+EXPLAIN EXTENDED
+SELECT u.city, COUNT(*) AS cnt
+FROM user_events e
+JOIN dim_users u ON e.user_id = u.user_id
+WHERE e.event_type = 'purchase'
+GROUP BY u.city
+ORDER BY cnt DESC
+LIMIT 10;
+```
