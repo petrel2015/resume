@@ -19,3 +19,5 @@ Scala 常见类型定义有 `class`、`case class`、`object`、`trait`，并且
 - Scala 更强调不可变数据与模式匹配（`case class` / `case object`）
 - Scala 更强调混入组合（`trait`）
 - Java 更强调类继承 + 接口约定
+
+备注：`case class` 更像 DTO/值对象（类似 Java `record` 或 Lombok `@Value`），而不是传统 JavaBean（可变字段 + getter/setter + 无参构造）。
